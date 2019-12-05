@@ -1,7 +1,7 @@
+/*
 package by.bsuir.gunko7.Controllers;
 
-import by.bsuir.gunko7.Entities.Point;
-import by.bsuir.gunko7.Entities.Way;
+import by.bsuir.gunko7.Entities.Tour;
 import by.bsuir.gunko7.Services.PointService;
 import by.bsuir.gunko7.Services.TransportService;
 import by.bsuir.gunko7.Services.UserService;
@@ -129,24 +129,24 @@ public class WaysController {
         model.addAttribute("isLogin", userService.isLogin());
         model.addAttribute("transportList", transportService.getTransportList());
 
-        Way way = wayService.getById(id);
-        model.addAttribute("way", way);
-        List<Point> pointList = pointService.getSubPoints(way.getId());
+        Tour tour = wayService.getById(id);
+        model.addAttribute("way", tour);
+        List<Point> pointList = pointService.getSubPoints(tour.getId());
 
-        List<Way> wayList = new ArrayList<>();
-        wayList.add(wayService.getSubWay(way.getStartPoint(), pointList.get(0)));
-        for(int i = 0; i < pointList.size()-1; i++) { wayList.add(wayService.getSubWay(pointList.get(i), pointList.get(i+1))); }
-        wayList.add(wayService.getSubWay(pointList.get(pointList.size()-1), way.getEndPoint()));
+        List<Tour> tourList = new ArrayList<>();
+        tourList.add(wayService.getSubWay(tour.getStartPoint(), pointList.get(0)));
+        for(int i = 0; i < pointList.size()-1; i++) { tourList.add(wayService.getSubWay(pointList.get(i), pointList.get(i+1))); }
+        tourList.add(wayService.getSubWay(pointList.get(pointList.size()-1), tour.getEndPoint()));
 
         Double sumLength = 0.0;
         Double sumTime = 0.0;
-        for(Way buf : wayList) {
+        for(Tour buf : tourList) {
             sumLength += buf.getLength();
             sumTime += buf.getLength() / buf.getTransport().getSpeed();
         }
 
         model.addAttribute("pointList", pointList);
-        model.addAttribute("wayList", wayList);
+        model.addAttribute("wayList", tourList);
         model.addAttribute("sumLength", sumLength);
         model.addAttribute("sumTime", sumTime);
 
@@ -159,3 +159,4 @@ public class WaysController {
         return "redirect:/ways";
     }
 }
+*/

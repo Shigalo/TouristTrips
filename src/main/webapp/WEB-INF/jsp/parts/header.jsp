@@ -13,20 +13,15 @@
     <table>
         <tr>
             <td><a href="${pageContext.request.contextPath}/">Главная</a></td>
-            <td><a href="${pageContext.request.contextPath}/points">Точки снабжения</a></td>
-            <td><a href="${pageContext.request.contextPath}/ways">Пути снабжения</a></td>
-            <td><a href="${pageContext.request.contextPath}/transport">Транспорт компании</a></td>
-            <c:if test="${isLogin}"><td><a href="${pageContext.request.contextPath}/requests">Заявки</a></td></c:if>
-            <c:if test="${isAdmin}"><td><a href="${pageContext.request.contextPath}/requests/push">Отправить</a></td></c:if>
-            <c:if test="${!isLogin}"><td class = "log" id = "login"><a href="${pageContext.request.contextPath}/login">Вход</a></td></c:if>
             <c:if test="${isLogin}">
-            <td class = "log" id = "logout">
-                <form action="${pageContext.request.contextPath}/logout" method="post">
-                <input type="hidden" name="_csrf" value="${_csrf.token}" />
-                <input type="submit" value="Выход">
-                </form>
-            </td>
+                <td><a href="${pageContext.request.contextPath}/">Туры</a></td>
+                <td><form action="${pageContext.request.contextPath}/logout" method="post">
+                    <input type="hidden" name="_csrf" value="${_csrf.token}" />
+                    <input type="submit" value="Выход">
+                </form></td>
             </c:if>
+            <c:if test="${!isLogin}"><td><a href="${pageContext.request.contextPath}/login">Вход</a></td></c:if>
+
         </tr>
     </table>
 </header>

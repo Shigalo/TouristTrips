@@ -13,21 +13,18 @@ public class Request {
     private Integer id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "way_id")
-    private Way way;
+    @JoinColumn(name = "tour_id")
+    private Tour tour;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
 
-    private Double weight;
     private Double cost;
-    private Boolean complete;
 
-    public Request(Way way, User user, Double weight, Double cost) {
-        this.way = way;
+    public Request(Tour tour, User user, Double cost) {
+        this.tour = tour;
         this.user = user;
-        this.weight = weight;
         this.cost = cost;
     }
 

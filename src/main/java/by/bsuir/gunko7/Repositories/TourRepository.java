@@ -1,0 +1,15 @@
+package by.bsuir.gunko7.Repositories;
+
+import by.bsuir.gunko7.Entities.Tour;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+public interface TourRepository extends JpaRepository<Tour, Long> {
+
+    public Tour findById(Integer id);
+
+    @Transactional
+    public void deleteById(Integer id);
+}

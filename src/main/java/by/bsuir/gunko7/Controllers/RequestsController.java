@@ -1,3 +1,4 @@
+/*
 package by.bsuir.gunko7.Controllers;
 
 import by.bsuir.gunko7.Entities.*;
@@ -44,8 +45,8 @@ public class RequestsController {
         model.addAttribute("transportList", transportService.getTransportList());
 
 
-        List<Way> wayList = wayService.getWayList();
-        model.addAttribute("wayList", wayList);
+        List<Tour> tourList = wayService.getWayList();
+        model.addAttribute("wayList", tourList);
         model.addAttribute("wayService", wayService);
 
         return "addRequest";
@@ -59,16 +60,16 @@ public class RequestsController {
         model.addAttribute("isAdmin", userService.isAdmin());
         model.addAttribute("isLogin", userService.isLogin());
 
-        Way way = wayService.getById(id);
+        Tour tour = wayService.getById(id);
         User user = userService.getCurrentUser();
         Double cost = Double.valueOf(weight);
         switch (type) {
-            case "dangerous": cost *= wayService.getDangerous(way); break;
-            case "fragile": cost *= wayService.getFragile(way); break;
-            case "perishable": cost *= wayService.getPerishable(way); break;
-            case "normal": cost *= wayService.getCost(way); break;
+            case "dangerous": cost *= wayService.getDangerous(tour); break;
+            case "fragile": cost *= wayService.getFragile(tour); break;
+            case "perishable": cost *= wayService.getPerishable(tour); break;
+            case "normal": cost *= wayService.getCost(tour); break;
         }
-        Request request = new Request(way, user, Double.valueOf(weight), cost);
+        Request request = new Request(tour, user, Double.valueOf(weight), cost);
         request.setComplete(false);
         requestService.addRequest(request);
 
@@ -101,3 +102,4 @@ public class RequestsController {
         return "redirect:/requests";
     }
 }
+*/

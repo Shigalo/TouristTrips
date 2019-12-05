@@ -19,11 +19,10 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
 
     public List<Request> findByUser(User user);
 
-    public List<Request> findByCompleteFalse();
-
-    @Transactional
+/*    @Transactional
     @Modifying
+//    @Query("update Request set complete = true where id = ?1")
     @Query("update Request r set r.complete = true where r.id = ?1")
-    public void setComplete(Integer id);
+    public void setComplete(Integer id);*/
 
 }

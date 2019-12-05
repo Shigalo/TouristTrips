@@ -33,12 +33,4 @@ public class RequestService {
     public List<Request> getRequestList() {
         return requestRepository.findAll();
     }
-
-    public List<Request> getWaitingRequestList() {
-        return requestRepository.findByCompleteFalse();
-    }
-
-    public void complete(String id) {
-        requestRepository.setComplete(Integer.valueOf(id));
-    }
 }

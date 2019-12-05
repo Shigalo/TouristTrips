@@ -68,7 +68,6 @@
                 </tr>
             </c:forEach>
         </table>
-        <input type="hidden" name="_csrf" value="${_csrf.token}" />
     </form>
 </div>
 <%@include file='parts/footer.jsp'%>

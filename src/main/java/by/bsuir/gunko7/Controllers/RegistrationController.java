@@ -51,6 +51,6 @@ public class RegistrationController {
         User user = new User(username, password, true);
         user.setRoles(Collections.singleton(Role.USER));
         userRepository.save(user);
-        return "redirect:/";
+        return "redirect:/login";
     }
 }
