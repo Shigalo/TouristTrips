@@ -6,23 +6,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Поставки</title>
-
 </head>
 <body>
+<div class="log">
+    <c:if test="${isLogin}"><form action="${pageContext.request.contextPath}/logout" method="post">
+        <input type="hidden" name="_csrf" value="${_csrf.token}" />
+        <input type="submit" value="Выход">
+    </form></c:if>
+    <c:if test="${!isLogin}"><a href="${pageContext.request.contextPath}/login">Вход</a></c:if>
+</div>
 <header>
-    <table>
+    <a href="${pageContext.request.contextPath}/"><div class="mainHref">
+        <div style="padding-top: 70px">Главная</div>
+        <%--<img src="<c:url value="resources/images/home.png"/>" width="120" height="90">--%>
+    </div></a>
+    <table border="1">
         <tr>
-            <td><a href="${pageContext.request.contextPath}/">Главная</a></td>
-            <c:if test="${isLogin}">
-                <td><a href="${pageContext.request.contextPath}/">Туры</a></td>
-                <td><form action="${pageContext.request.contextPath}/logout" method="post">
-                    <input type="hidden" name="_csrf" value="${_csrf.token}" />
-                    <input type="submit" value="Выход">
-                </form></td>
-            </c:if>
-            <c:if test="${!isLogin}"><td><a href="${pageContext.request.contextPath}/login">Вход</a></td></c:if>
-
+            <td><a href="${pageContext.request.contextPath}/">Туры</a></td><%----%><%----%><%--wtf--%>
         </tr>
     </table>
+
 </header>
 <article>
