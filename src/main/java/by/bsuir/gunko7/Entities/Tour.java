@@ -14,7 +14,14 @@ public class Tour {
     private Integer id;
 
     private String target;
-    private Boolean complete;
+    private String name;
+    private Integer places;
+
+    public Tour(String target, String name, Integer places) {
+        this.target = target;
+        this.name = name;
+        this.places = places;
+    }
 
     public Tour() {
     }

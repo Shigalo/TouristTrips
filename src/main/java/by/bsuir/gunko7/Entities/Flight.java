@@ -13,20 +13,19 @@ public class Flight {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
 
-    String outp;
+    @Column(name = "outp")
+    String out;
     String target;
     Timestamp departure;
     Timestamp arrival;
     int places;
-    int tickets = 0;
 
-    public Flight(String outp, String target, Timestamp departure, Timestamp arrival, int places, int tickets) {
-        this.outp = outp;
+    public Flight(String out, String target, int places, Timestamp departure, Timestamp arrival) {
+        this.out = out;
         this.target = target;
         this.departure = departure;
         this.arrival = arrival;
         this.places = places;
-        this.tickets = tickets;
     }
 
     public Flight() {

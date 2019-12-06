@@ -1,6 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page language="java" pageEncoding="UTF-8"%>
-<%@include file='parts/header.jsp'%>
+<%@include file='../parts/header.jsp'%>
 
 <div style="text-align: center; position: relative; top: 20%; left: -20%; ">
     <h3>Авторизация</h3>
@@ -26,4 +26,4 @@
     </form>
     <a href="${pageContext.request.contextPath}/registration">Регистрация</a>
 </div>
-<%@include file='parts/footer.jsp'%>
+<%@include file='../parts/footer.jsp'%>

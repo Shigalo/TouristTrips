@@ -29,7 +29,7 @@ public class RegistrationController {
         model.addAttribute("isLogin", userService.isLogin());
         model.addAttribute("isAdmin", userService.isAdmin());
 
-        return "registration";
+        return "accountWork/registration";
     }
 
     @PostMapping

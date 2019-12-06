@@ -1,5 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
-<%@include file='parts/header.jsp'%>
+<%@include file='../parts/header.jsp'%>
 
 <div style="text-align: center; position: relative; top: 20%; left: -20%; ">
 
@@ -12,7 +12,7 @@
             <tr>
                 <th>ID</th>
                 <th>Цельевой пункт</th>
-                <th>outp</th>
+                <th>out</th>
                 <th>departure</th>
                 <th>arrival</th>
                 <th>places</th>
@@ -22,7 +22,7 @@
                 <tr id="${flight.id}">
                     <td>${flight.id}</td>
                     <td>${flight.target}</td>
-                    <td>${flight.outp}</td>
+                    <td>${flight.out}</td>
                     <td>${flight.departure}</td>
                     <td>${flight.arrival}</td>
                     <td>${flight.places}</td>
@@ -39,5 +39,5 @@
         </table>
     </c:if>
 </div>
-<%@include file='parts/footer.jsp'%>
+<%@include file='../parts/footer.jsp'%>
 
