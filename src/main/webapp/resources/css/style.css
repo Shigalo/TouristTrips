@@ -36,14 +36,13 @@ article {
     position: absolute;
     top: 70px;
     right: 100px;
+    color: black;
 }
 
-
-
-
-/*footer {
+#footer {
     position: absolute;
-    bottom: 3%;
-    left: 5%;
-    color: white;
-}*/
+    bottom: 0;
+    text-align: left;
+    width: 99%;
+    height: 2.5rem;            /* Footer height */
+}

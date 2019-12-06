@@ -5,7 +5,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Поставки</title>
+    <title>туры</title>
 </head>
 <body>
 <div class="log">
@@ -22,7 +22,8 @@
     </div></a>
     <table border="1">
         <tr>
-            <td><a href="${pageContext.request.contextPath}/">Туры</a></td><%----%><%----%><%--wtf--%>
+            <td><a href="${pageContext.request.contextPath}/tours">Туры</a></td>
+            <td><a href="${pageContext.request.contextPath}/flights">Полёты</a></td>
         </tr>
     </table>
 

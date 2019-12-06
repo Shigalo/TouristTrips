@@ -20,6 +20,10 @@ public class Request {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "flight_id")
+    private Flight flight;
+
     private Double cost;
 
     public Request(Tour tour, User user, Double cost) {

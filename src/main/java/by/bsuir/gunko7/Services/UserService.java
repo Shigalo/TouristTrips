@@ -1,11 +1,14 @@
 package by.bsuir.gunko7.Services;
 
 import by.bsuir.gunko7.Entities.Role;
+import by.bsuir.gunko7.Entities.Tour;
 import by.bsuir.gunko7.Entities.User;
 import by.bsuir.gunko7.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserService {
@@ -16,6 +19,8 @@ public class UserService {
     private User findByName(String name) {
         return userRepository.findByName(name);
     }
+
+    public List<User> findAll() { return userRepository.findAll(); }
 
     public User getCurrentUser(){
         try {

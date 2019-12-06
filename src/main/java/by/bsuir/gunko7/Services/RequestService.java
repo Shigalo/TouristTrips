@@ -30,7 +30,7 @@ public class RequestService {
         requestRepository.deleteById(id);
     }
 
-    public List<Request> getRequestList() {
+    public List<Request> findAll() {
         return requestRepository.findAll();
     }
 }

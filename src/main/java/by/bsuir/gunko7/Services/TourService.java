@@ -5,6 +5,8 @@ import by.bsuir.gunko7.Repositories.TourRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TourService {
 
@@ -18,4 +20,7 @@ public class TourService {
     public void tourRemoveById(int id) {
         tourRepository.deleteById(id);
     }
+
+    public List<Tour> findAll() { return tourRepository.findAll(); }
+
 }

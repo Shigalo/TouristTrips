@@ -8,5 +8,6 @@
     <p>пользователи (убрать): ${userList}</p>
     <p>кол-во путей (убрать): ${wayList}</p>
     <p>кол-во заявок (убрать): ${requestList}</p>
+    <p>кол-во рейсов (убрать): ${flightList}</p>
 </div>
 <%@include file='parts/footer.jsp'%>

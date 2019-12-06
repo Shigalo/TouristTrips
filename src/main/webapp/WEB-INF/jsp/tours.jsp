@@ -1,8 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@include file='parts/header.jsp'%>
-<c:if test="${isAdmin}">
-    <a href="/tours/addTour">Добавить поездку</a>
-</c:if>
 
 <div style="text-align: center; position: relative; top: 20%; left: -20%; ">
     <c:if test="${empty tourList}"><h2>Извините, услуги не предоставляются</h2></c:if>
@@ -12,6 +9,7 @@
             <tr>
                 <th>ID</th>
                 <th>Название</th>
+                <th>Цельевой пункт</th>
             </tr>
 
             <c:forEach items="${tourList}" var="tour">
