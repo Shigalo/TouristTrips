@@ -20,7 +20,7 @@ public class InfoService {
         infoRepository.save(info);
     }
 
-    public Info getById(String id) {
+    public Info findByID(String id) {
         return infoRepository.findById(Integer.valueOf(id));
     }
 

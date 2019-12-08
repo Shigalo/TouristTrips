@@ -17,8 +17,8 @@ public class TourService {
 
     public void addTour(Tour tour) { tourRepository.save(tour); }
 
-    public void tourRemoveById(int id) {
-        tourRepository.deleteById(id);
+    public void tourRemoveById(String id) {
+        tourRepository.deleteById(Integer.valueOf(id));
     }
 
     public List<Tour> findAll() { return tourRepository.findAll(); }

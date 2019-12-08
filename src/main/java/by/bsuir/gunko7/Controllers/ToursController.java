@@ -20,6 +20,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
@@ -54,10 +56,12 @@ public class ToursController {
     public String create(@RequestParam String target,
                          @RequestParam String name,
                          @RequestParam Integer places,
-                         Model model) {
+                         @RequestParam String date,
+                         Model model) throws ParseException {
         model.addAttribute("isLogin", userService.isLogin());
         model.addAttribute("isAdmin", userService.isAdmin());
-        Tour tour = new Tour(target, name, places, false);
+        Tour tour = new Tour(target, name, places, false,
+                new Timestamp(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").parse(date).getTime()));
         tourService.addTour(tour);
         return "redirect:/tours/tourInfo/" + tour.getId();
     }
@@ -74,28 +78,48 @@ public class ToursController {
 
     @PostMapping("/tourInfo/{id}")
     public String setInfo(Model model, @PathVariable String id,
+                          @RequestParam("image") MultipartFile tourImage,
+                          @RequestParam String tourName,
+                          @RequestParam String tourText,
+                          @RequestParam String tourTarget,
                           @RequestParam String[] about,
                           @RequestParam String[] header,
                           @RequestParam Integer[] sequence,
                           @RequestParam(value = "posting", required = false) String posting,
-                          @RequestParam("image") MultipartFile[] image) throws SQLException {
+                          @RequestParam("image") MultipartFile[] image) throws SQLException, IOException {
         model.addAttribute("isLogin", userService.isLogin());
         model.addAttribute("isAdmin", userService.isAdmin());
 
         Tour tour = tourService.findById(id);
         List<Info> infos = infoService.findByTour(tour);
         infoService.clear(tour);
-        for(int i = 0; i < about.length; i++) {
-            Blob blob = null;
-            try { blob = new SerialBlob(image[i].getBytes()); } catch (Exception ignored) { }
-            if (blob.length() == 0) { for(Info info : infos) { if(sequence[i] == info.getSequence()) { blob = info.getPicture(); break; } } }
-            infoService.addInfo(new Info(tourService.findById(id), i, header[i], about[i], blob));
+        Blob blob;
+        if(about.length != 1) {
+            for (int i = 1; i < about.length; i++) {
+                blob = new SerialBlob(image[i].getBytes());
+                if (blob.length() == 0) { for (Info info : infos) { if (sequence[i] == info.getSequence()) { blob = info.getPicture();break; } } }
+                infoService.addInfo(new Info(tourService.findById(id), i, header[i], about[i], blob));
+            }
         }
         tour.setPost(posting != null);
-
+        blob = new SerialBlob(tourImage.getBytes());
+        if (blob.length() != 0) tour.setPicture(blob);
+        tour.setName(tourName);
+        tour.setAbout(tourText);
+        tour.setTarget(tourTarget);
 
         tourService.update(tour);
         return "redirect:/tours";
+    }
+
+    @GetMapping("getTour/{id}")
+    public String getTour(Model model, @PathVariable String id) {
+        model.addAttribute("isLogin", userService.isLogin());
+        model.addAttribute("isAdmin", userService.isAdmin());
+        Tour tour = tourService.findById(id);
+        model.addAttribute("tour", tour);
+        model.addAttribute("infoList", infoService.findByTour(tour));
+        return "tours/getTour";
     }
 
     @GetMapping("/remove/{id}")

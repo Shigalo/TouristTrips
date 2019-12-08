@@ -30,6 +30,7 @@ public class HomeController {
     @Autowired
     FlightService flightService;
 
+
     @GetMapping("/")
     public String home(Model model) {
         List<User> userList = userService.findAll();
@@ -41,8 +42,12 @@ public class HomeController {
         model.addAttribute("userList", userList.size());
         model.addAttribute("wayList", tourList.size());
         model.addAttribute("flightList", flightList.size());
+
+
         model.addAttribute("isLogin", userService.isLogin());
         model.addAttribute("isAdmin", userService.isAdmin());
+
+        model.addAttribute("tourService", tourService);
 
         return "homepage";
     }

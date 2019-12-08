@@ -19,6 +19,9 @@ CREATE TABLE `touristTrips`.`tour` (
   target VARCHAR(45) NOT NULL,
   name varchar(45) NOT NULL,
   post boolean DEFAULT false NOT NULL,
+  date datetime NOT NULL,
+  picture blob,
+  about text,
   PRIMARY KEY (`id`));
 
 CREATE TABLE `touristTrips`.`flight` (

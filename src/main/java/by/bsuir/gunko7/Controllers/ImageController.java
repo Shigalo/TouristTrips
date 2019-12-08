@@ -1,6 +1,7 @@
 package by.bsuir.gunko7.Controllers;
 
 import by.bsuir.gunko7.Services.InfoService;
+import by.bsuir.gunko7.Services.TourService;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,12 +19,25 @@ public class ImageController {
 
     @Autowired
     private InfoService infoService;
+    @Autowired
+    private TourService tourService;
 
-    @RequestMapping(value = "/tours/tourInfo/infoImage/{id}")
+    @RequestMapping(value = "/infoImage/{id}")
     public void getInfoImage(HttpServletResponse response, @PathVariable("id") String id) throws Exception {
         response.setContentType("image/jpeg");
 
-        Blob picture = infoService.getById(id).getPicture();
+        Blob picture = infoService.findByID(id).getPicture();
+
+        byte[] bytes = picture.getBytes(1, (int) picture.length());
+        InputStream inputStream = new ByteArrayInputStream(bytes);
+        IOUtils.copy(inputStream, response.getOutputStream());
+    }
+
+    @RequestMapping(value = "/tourImage/{id}")
+    public void getTourImage(HttpServletResponse response, @PathVariable("id") String id) throws Exception {
+        response.setContentType("image/jpeg");
+
+        Blob picture = tourService.findById(id).getPicture();
 
         byte[] bytes = picture.getBytes(1, (int) picture.length());
         InputStream inputStream = new ByteArrayInputStream(bytes);
