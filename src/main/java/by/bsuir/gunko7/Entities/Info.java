@@ -3,6 +3,7 @@ package by.bsuir.gunko7.Entities;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.sql.Blob;
 
 @Entity
 @Data
@@ -19,9 +20,9 @@ public class Info {
     Integer sequence;
     String header;
     String about;
-    byte[] picture;
+    Blob picture;
 
-    public Info(Tour tour, Integer sequence, String header, String about, byte[] picture) {
+    public Info(Tour tour, Integer sequence, String header, String about, Blob picture) {
         this.tour = tour;
         this.sequence = sequence;
         this.header = header;

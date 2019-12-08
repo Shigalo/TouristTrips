@@ -12,4 +12,5 @@ public interface TourRepository extends JpaRepository<Tour, Long> {
 
     @Transactional
     public void deleteById(Integer id);
+
 }

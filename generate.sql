@@ -18,6 +18,7 @@ CREATE TABLE `touristTrips`.`tour` (
   places int NOT NULL,
   target VARCHAR(45) NOT NULL,
   name varchar(45) NOT NULL,
+  post boolean DEFAULT false NOT NULL,
   PRIMARY KEY (`id`));
 
 CREATE TABLE `touristTrips`.`flight` (
@@ -28,16 +29,14 @@ CREATE TABLE `touristTrips`.`flight` (
   arrival datetime NOT NULL,
   places int NOT NULL);
 
-  CREATE TABLE info
-(
+CREATE TABLE info(
     id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
     tour_id int,
     sequence int NOT NULL,
     header varchar(45),
     about text,
-    picture varbinary(500),
-    CONSTRAINT info_tour FOREIGN KEY (tour_id) REFERENCES tour (id) ON DELETE CASCADE ON UPDATE CASCADE
-);
+    picture blob(500),
+    CONSTRAINT info_tour FOREIGN KEY (tour_id) REFERENCES tour (id) ON DELETE CASCADE ON UPDATE CASCADE);
 
 CREATE TABLE `touristTrips`.`request` (
   id int PRIMARY KEY NOT NULL AUTO_INCREMENT,

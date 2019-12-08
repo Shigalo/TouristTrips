@@ -16,11 +16,13 @@ public class Tour {
     private String target;
     private String name;
     private Integer places;
+    private Boolean post;
 
-    public Tour(String target, String name, Integer places) {
+    public Tour(String target, String name, Integer places, Boolean post) {
         this.target = target;
         this.name = name;
         this.places = places;
+        this.post = post;
     }
 
     public Tour() {

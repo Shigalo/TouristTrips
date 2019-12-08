@@ -21,11 +21,11 @@
                     <td>${tour.name}</td>
                     <td>${tour.target}</td>
                     <td>${tour.places}</td>
-                    <%--<td>
-                        <form action="/tours/tourView/${tour.id}" method="get">
-                            <input type="submit" value="Подробнее">
-                        </form>
-                    </td>--%>
+                    <td>
+                    <form action="/tours/tourInfo/${tour.id}" method="get">
+                        <input type="submit" value="Подробнее">
+                    </form>
+                </td>
                     <%--<c:if test="${isAdmin}">--%>
                         <td><a href="<c:url value='/tours/remove/${tour.id}'/>">Удалить</a></td>
                     <%--</c:if>--%>

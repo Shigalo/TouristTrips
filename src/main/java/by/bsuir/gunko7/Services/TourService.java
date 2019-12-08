@@ -13,7 +13,7 @@ public class TourService {
     @Autowired
     TourRepository tourRepository;
 
-    public Tour getById(String id) { return tourRepository.findById(Integer.valueOf(id)); }
+    public Tour findById(String id) { return tourRepository.findById(Integer.valueOf(id)); }
 
     public void addTour(Tour tour) { tourRepository.save(tour); }
 
@@ -24,4 +24,8 @@ public class TourService {
     public List<Tour> findAll() { return tourRepository.findAll(); }
 
     public void removeById(Integer id) { tourRepository.deleteById(id); }
+
+    public void update(Tour tour) {
+        tourRepository.save(tour);
+    }
 }
