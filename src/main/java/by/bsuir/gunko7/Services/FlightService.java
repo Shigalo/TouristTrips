@@ -1,7 +1,7 @@
 package by.bsuir.gunko7.Services;
 
 import by.bsuir.gunko7.Entities.Flight;
-import by.bsuir.gunko7.Entities.User;
+import by.bsuir.gunko7.Entities.Tour;
 import by.bsuir.gunko7.Repositories.FlightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,5 +29,10 @@ public class FlightService {
 
     public void removeById(int id) {
         flightRepository.deleteById(id);
+    }
+
+    public List<Flight> findForTour(Tour tour) {
+        String target = tour.getTarget();
+        return flightRepository.findByTarget(target);
     }
 }

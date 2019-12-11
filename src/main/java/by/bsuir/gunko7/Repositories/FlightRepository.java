@@ -15,6 +15,8 @@ public interface FlightRepository extends JpaRepository<Flight, Long> {
     @Transactional
     public void deleteById(Integer id);
 
+    public List<Flight> findByTarget(String target);
+
 /*    @Transactional
     @Modifying
 //    @Query("update Flight set complete = true where id = ?1")

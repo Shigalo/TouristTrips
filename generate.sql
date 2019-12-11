@@ -20,8 +20,11 @@ CREATE TABLE `touristTrips`.`tour` (
   name varchar(45) NOT NULL,
   post boolean DEFAULT false NOT NULL,
   date datetime NOT NULL,
-  picture blob,
+  picture blob(500),
   about text,
+  length int,
+  type varchar(45),
+  cost double NULL,
   PRIMARY KEY (`id`));
 
 CREATE TABLE `touristTrips`.`flight` (
@@ -30,9 +33,9 @@ CREATE TABLE `touristTrips`.`flight` (
   target varchar(45) NOT NULL,
   departure datetime NOT NULL,
   arrival datetime NOT NULL,
-  places int NOT NULL);
+  cost double);
 
-CREATE TABLE info(
+CREATE TABLE `touristTrips`.`info`(
     id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
     tour_id int,
     sequence int NOT NULL,

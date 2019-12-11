@@ -33,21 +33,15 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model) {
-        List<User> userList = userService.findAll();
-        List<Tour> tourList = tourService.findAll();
-        List<Request> requestList = requestService.findAll();
-        List<Flight> flightList = flightService.findAll();
 
-        model.addAttribute("requestList", requestList.size());
-        model.addAttribute("userList", userList.size());
-        model.addAttribute("wayList", tourList.size());
-        model.addAttribute("flightList", flightList.size());
-
+        model.addAttribute("tourList", tourService.findAll());
+        model.addAttribute("targetSet", tourService.targetSet());
+        model.addAttribute("lengthSet", tourService.lengthSet());
+        model.addAttribute("typeSet", tourService.typeSet());
 
         model.addAttribute("isLogin", userService.isLogin());
         model.addAttribute("isAdmin", userService.isAdmin());
 
-        model.addAttribute("tourService", tourService);
 
         return "homepage";
     }

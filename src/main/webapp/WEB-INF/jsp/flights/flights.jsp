@@ -1,7 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@include file='../parts/header.jsp'%>
 
-<div style="text-align: center; position: relative; top: 20%; left: -20%; ">
+<div id="content">
 
     <a href="${pageContext.request.contextPath}/flights/add">Добавить</a>
 
@@ -15,7 +15,7 @@
                 <th>out</th>
                 <th>departure</th>
                 <th>arrival</th>
-                <th>places</th>
+                <th>cost</th>
             </tr>
 
             <c:forEach items="${flightList}" var="flight">
@@ -25,7 +25,7 @@
                     <td>${flight.out}</td>
                     <td>${flight.departure}</td>
                     <td>${flight.arrival}</td>
-                    <td>${flight.places}</td>
+                    <td>${flight.cost}</td>
                     <%--<td>
                         <form action="/tours/tourView/${flight.id}" method="get">
                             <input type="submit" value="Подробнее">

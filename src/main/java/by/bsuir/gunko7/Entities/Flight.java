@@ -15,17 +15,17 @@ public class Flight {
 
     @Column(name = "outp")
     String out;
-    String target;
-    Timestamp departure;
+    String target;//tour
+    Timestamp departure;//from tour
     Timestamp arrival;
-    int places;
+    Double cost;
 
-    public Flight(String out, String target, int places, Timestamp departure, Timestamp arrival) {
+    public Flight(String out, String target, Double cost, Timestamp departure, Timestamp arrival) {
         this.out = out;
         this.target = target;
         this.departure = departure;
         this.arrival = arrival;
-        this.places = places;
+        this.cost = cost;
     }
 
     public Flight() {

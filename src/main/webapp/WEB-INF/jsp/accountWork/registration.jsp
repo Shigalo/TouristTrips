@@ -1,7 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@include file='../parts/header.jsp'%>
 
-<div style="text-align: center; position: relative; top: 20%; left: -20%; ">
+<div id="content">
     <form action="" method="post">
         <div style="position:relative; padding: 5px"><label>Имя : <input type="text" name="username"></label></div>
         <div style="position:relative; padding: 5px"><label>Пароль : <input type="password" name="password"></label></div>

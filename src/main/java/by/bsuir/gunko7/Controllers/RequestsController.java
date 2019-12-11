@@ -1,14 +1,16 @@
-/*
 package by.bsuir.gunko7.Controllers;
 
-import by.bsuir.gunko7.Entities.*;
-import by.bsuir.gunko7.Repositories.UserRepository;
-import by.bsuir.gunko7.Services.*;
+import by.bsuir.gunko7.Entities.Flight;
+import by.bsuir.gunko7.Entities.Tour;
+import by.bsuir.gunko7.Services.FlightService;
+import by.bsuir.gunko7.Services.TourService;
+import by.bsuir.gunko7.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
@@ -17,42 +19,25 @@ import java.util.List;
 public class RequestsController {
 
     @Autowired
-    UserRepository userRepository;
-
-    @Autowired
     UserService userService;
-    @Autowired
-    RequestService requestService;
-    @Autowired
-    TransportService transportService;
-    @Autowired
-    PointService pointService;
-    @Autowired
-    WayService wayService;
 
-    @GetMapping
-    public String setForm2(Model model) {
+    @Autowired
+    TourService tourService;
+    @Autowired
+    FlightService flightService;
+
+    @GetMapping("/addRequest/{id}")
+    public String addTransport(Model model, @PathVariable String id) {
         model.addAttribute("isLogin", userService.isLogin());
-        model.addAttribute("isAdmin", userService.isAdmin());
-        if(userService.isAdmin()) { model.addAttribute("requestList", requestService.getRequestList()); }
-        else { model.addAttribute("requestList", requestService.getRequestList(userService.getCurrentUser())); }
-        return "requests";
+        Tour tour = tourService.findById(id);
+        List<Flight> flightList = flightService.findForTour(tour);
+        model.addAttribute("tour", tourService.findById(id));
+        model.addAttribute("flightList", flightList);
+
+        return "requests/newRequest";
     }
 
-    @GetMapping("/addRequest")
-    public String addTransport(Model model) {
-        model.addAttribute("isLogin", userService.isLogin());
-        model.addAttribute("transportList", transportService.getTransportList());
-
-
-        List<Tour> tourList = wayService.getWayList();
-        model.addAttribute("wayList", tourList);
-        model.addAttribute("wayService", wayService);
-
-        return "addRequest";
-    }
-
-    @PostMapping("/addRequest")
+    /*@PostMapping("/addRequest")
     public String addTransportData(@RequestParam String weight,
                                    @RequestParam String id,
                                    @RequestParam String type,
@@ -100,6 +85,5 @@ public class RequestsController {
             requestService.complete(id);
         }
         return "redirect:/requests";
-    }
+    }*/
 }
-*/

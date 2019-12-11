@@ -45,12 +45,12 @@ public class FlightsController {
                          @RequestParam String target,
                          @RequestParam String departure,
                          @RequestParam String arrival,
-                         @RequestParam Integer places,
+                         @RequestParam Double cost,
                          Model model) throws ParseException {
         model.addAttribute("isLogin", userService.isLogin());
         model.addAttribute("isAdmin", userService.isAdmin());
 
-        Flight flight = new Flight(out, target, places,
+        Flight flight = new Flight(out, target, cost,
                 new Timestamp(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").parse(departure).getTime()),
                 new Timestamp(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").parse(arrival).getTime()));
         flightService.addFlight(flight);

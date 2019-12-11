@@ -1,16 +1,17 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@include file='../parts/header.jsp'%>
-<div style="text-align: center; position: relative; top: 20%; left: -20%; ">
+<div id="content">
     <div style="position:relative; padding: 5px"><label>id : ${tour.id}</label></div>
 
     <form action="" method="post" enctype="multipart/form-data">
 
         <div>
-            <img src="/tourImage/<c:out value='${tour.id}'/>" style="width: 150px" /><br/>
+            <img src="/tourImage/<c:out value='${tour.id}'/>" style="width: 150px; height: 150px" /><br/>
             <input type="file" accept="image/*" onchange="readURL(this)" name="image" /><br/>
             <textarea name="tourName" placeholder="Заголовок">${tour.name}</textarea><br/>
             <textarea name="tourTarget" placeholder="Пункт">${tour.target}</textarea><br/>
             <textarea name="tourText" placeholder="Описание">${tour.about}</textarea><br/>
+            <input type="number" step="0,01" name="tourCost" placeholder="Стоимсоть" value="${tour.cost}"><br/>
         </div>
 
         <input type="submit" value="Сохранить"><br>

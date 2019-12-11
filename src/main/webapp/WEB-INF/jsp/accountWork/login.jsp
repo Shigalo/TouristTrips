@@ -2,9 +2,9 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@include file='../parts/header.jsp'%>
 
-<div style="text-align: center; position: relative; top: 20%; left: -20%; ">
+<div id="content">
     <h3>Авторизация</h3>
-    <form action="/login" method="post">
+    <form action="${pageContext.request.contextPath}/login" method="post">
 
 <%--        <c:if test="${param.regSucc == true}">
             <div id="status">

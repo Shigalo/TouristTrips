@@ -5,7 +5,9 @@ import by.bsuir.gunko7.Repositories.TourRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class TourService {
@@ -27,5 +29,29 @@ public class TourService {
 
     public void update(Tour tour) {
         tourRepository.save(tour);
+    }
+
+    public Set<String> targetSet() {
+        Set<String> list = new HashSet<>();
+        for(Tour tour : findAll())
+            if(tour.getPost())
+                list.add(tour.getTarget());
+        return list;
+    }
+
+    public Set<String> typeSet() {
+        Set<String> list = new HashSet<>();
+        for(Tour tour : findAll())
+            if(tour.getPost())
+                list.add(tour.getType());
+        return list;
+    }
+
+    public Set<Integer> lengthSet() {
+        Set<Integer> list = new HashSet<>();
+        for(Tour tour : findAll())
+            if(tour.getPost())
+                list.add(tour.getLength());
+        return list;
     }
 }

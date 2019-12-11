@@ -3,7 +3,7 @@
 
 <a href="${pageContext.request.contextPath}/tours/add">Добавить</a>
 
-<div style="text-align: center; position: relative; top: 20%; left: -20%; ">
+<div id="content">
     <c:if test="${empty tourList}"><h2>Извините, услуги не предоставляются</h2></c:if>
     <c:if test="${!empty tourList}">
         <table>
