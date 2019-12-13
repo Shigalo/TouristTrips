@@ -33,9 +33,12 @@ article { margin: 0; }
     left: 170px; /* Расстояние от левого края */
     bottom: 0; right: 0;
 }
+input:focus {
+    background: #eaeaea;
+}
 
 .mainHref {
-    background: #6DB3F2 url("/resources/images/home.png") no-repeat;
+    background: #6DB3F2 url("/resources/images/tourism.png") no-repeat;
     width: 500px;
     height: 90px;
     left: 30%;

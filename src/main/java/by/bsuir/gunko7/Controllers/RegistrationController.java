@@ -46,10 +46,6 @@ public class RegistrationController {
             model.addAttribute("massage", "Пароли не совпадают!");
             return "accountWork/registration";
         }
-        if(userRepository.findByName(username) != null) {
-            model.addAttribute("massage", "Имя пользователя уже используется!");
-            return "accountWork/registration";
-        }
         User user = new User(username, password, true, surname, phone);
         user.setRoles(Collections.singleton(Role.USER));
         userRepository.save(user);

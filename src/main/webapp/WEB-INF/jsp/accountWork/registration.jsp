@@ -3,12 +3,19 @@
 
 <div id="content" align="center" style="left: -200px">
     <form action="" method="post">
-        <div style="position:relative; padding: 5px"><label>Введите имя : <input type="text" name="username"></label></div>
-        <div style="position:relative; padding: 5px"><label>Введите фамилию : <input type="text" name="surname"></label></div>
-        <div style="position:relative; padding: 5px"><label>Введите пароль : <input type="password" name="password"></label></div>
-        <div style="position:relative; padding: 5px"><label>Подтвердите пароль : <input type="password" name="passwordConfirm"></label></div>
-        <div style="position:relative; padding: 5px"><label>Введите контакт для связи</label>
-            <input type="tel" name="phone" id="phone" placeholder="(XX) XXX-XX-XX" class="masked" pattern="[(][0-9]{2}[)]\s[0-9]{3}-[0-9]{2}-[0-9]{2}" ></div>
+        <table>
+            <tr><td>Введите имя</td><td>
+                <input type="text" name="username" required pattern="[A-Za-zА-Яа-яЁё]{2,10}" placeholder="2-10 букв"></td></tr>
+            <tr><td>Введите фамилию</td><td>
+                <input type="text" name="surname" required pattern="[A-Za-zА-Яа-яЁё]{2,10}" placeholder="2-10 букв"></td></tr>
+            <tr><td>Введите пароль</td><td>
+                <input type="password" name="password" required pattern="[A-Za-zА-Яа-яЁё0-9]{4,16}" placeholder="4-16 букв и цифр"></td></tr>
+            <tr><td>Подтвердите пароль</td><td>
+                <input type="password" name="passwordConfirm" required></td><td>${confirmError}</td></tr>
+            <tr><td>Введите контакт для связи</td><td>
+                <input type="tel" name="phone" id="phone" placeholder="(XX) XXX-XX-XX" class="masked" pattern="[(][0-9]{2}[)]\s[0-9]{3}-[0-9]{2}-[0-9]{2}" >
+            </td><td>${nameError}</td></tr>
+        </table>
         <input type="hidden" name="_csrf" value="${_csrf.token}" />
         <span>${massage}</span>
         <div style="position:relative; padding: 5px"><input type="submit" value="Регистрация"/></div>
