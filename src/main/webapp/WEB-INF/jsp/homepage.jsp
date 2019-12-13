@@ -31,6 +31,9 @@
             </tr>
         </table></c:if>
     </c:forEach>
+    <c:if test="${tourList.size() == 0}">
+        <h2 style="left: 200px; position:relative">Извините, услуги не предоставляются</h2>
+    </c:if>
 </div>
 <script>
     document.getElementById("dateS").setAttribute("min", new Date().toISOString().split('T')[0]);

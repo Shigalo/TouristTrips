@@ -44,6 +44,10 @@ public class RegistrationController {
 
         if(!password.equals(passwordConfirm)) {
             model.addAttribute("massage", "Пароли не совпадают!");
+            model.addAttribute("username", username);
+            model.addAttribute("surname", surname);
+            model.addAttribute("phone", phone);
+            model.addAttribute("password", password);
             return "accountWork/registration";
         }
         User user = new User(username, password, true, surname, phone);

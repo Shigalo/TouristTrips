@@ -1,18 +1,20 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@include file='../parts/header.jsp'%>
 
-<a href="${pageContext.request.contextPath}/tours/add">Добавить</a>
 
 <div id="content">
-    <c:if test="${empty tourList}"><h2>Извините, услуги не предоставляются</h2></c:if>
+    <c:if test="${empty tourList}"><h3 style="left: 23%; position: relative">Записи предоставляемых услуг не найдены</h3></c:if>
+    <a style="left: 33%; position: relative" href="${pageContext.request.contextPath}/tours/add">Добавить</a>
     <c:if test="${!empty tourList}">
         <table>
             <caption>Предложения</caption>
             <tr>
-                <th>ID</th>
-                <th>name</th>
-                <th>target</th>
-                <th>places</th>
+                <th>ID тура</th>
+                <th>Название</th>
+                <th>Страна</th>
+                <th>Количество свободных мест</th>
+                <th>Дата</th>
+                <th>Статус</th>
             </tr>
 
             <c:forEach items="${tourList}" var="tour">
@@ -21,14 +23,14 @@
                     <td>${tour.name}</td>
                     <td>${tour.target}</td>
                     <td>${tour.places}</td>
+                    <td>${tour.date.toLocalDate()}</td>
+                    <c:if test="${tour.post}"><td>Размещено</td></c:if>
+                    <c:if test="${!tour.post}"><td>Скрыто</td></c:if>
                     <td>
-                    <form action="/tours/tourInfo/${tour.id}" method="get">
-                        <input type="submit" value="Подробнее">
-                    </form>
-                </td>
-                    <%--<c:if test="${isAdmin}">--%>
-                        <td><a href="<c:url value='/tours/remove/${tour.id}'/>">Удалить</a></td>
-                    <%--</c:if>--%>
+                        <form action="/tours/tourInfo/${tour.id}" method="get">
+                            <a href="#" onclick="this.parentNode.submit()">Подробнее</a>
+                        </form></td>
+                    <td><a href="<c:url value='/tours/remove/${tour.id}'/>">Удалить</a></td>
                 </tr>
             </c:forEach>
         </table>

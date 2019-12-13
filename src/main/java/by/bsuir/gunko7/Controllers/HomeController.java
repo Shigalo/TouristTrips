@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
@@ -41,13 +42,11 @@ public class HomeController {
 
         model.addAttribute("isLogin", userService.isLogin());
         model.addAttribute("isAdmin", userService.isAdmin());
-
-
         return "homepage";
     }
 
-   /* @GetMapping("/logout")
-    public String logout(Model model) {
-        return "redirect:/";
-    }*/
+    @RequestMapping("/403")
+    public String accessDenied() {
+        return "errors/403";
+    }
 }

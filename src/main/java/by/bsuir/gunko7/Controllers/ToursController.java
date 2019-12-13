@@ -6,6 +6,7 @@ import by.bsuir.gunko7.Services.InfoService;
 import by.bsuir.gunko7.Services.TourService;
 import by.bsuir.gunko7.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +33,7 @@ public class ToursController {
     InfoService infoService;
 
     @GetMapping("")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String getToursList(Model model) {
         model.addAttribute("isLogin", userService.isLogin());
         model.addAttribute("isAdmin", userService.isAdmin());
@@ -40,6 +42,7 @@ public class ToursController {
     }
 
     @GetMapping("/add")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String addForm(Model model) {
         model.addAttribute("isLogin", userService.isLogin());
         model.addAttribute("isAdmin", userService.isAdmin());
@@ -47,7 +50,7 @@ public class ToursController {
     }
 
     @PostMapping("/add")
-//    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String create(@RequestParam String target,
                          @RequestParam String name,
                          @RequestParam Integer places,
@@ -64,6 +67,7 @@ public class ToursController {
     }
 
     @GetMapping("/tourInfo/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String addInfo(Model model, @PathVariable String id) {
         model.addAttribute("isLogin", userService.isLogin());
         model.addAttribute("isAdmin", userService.isAdmin());
@@ -74,6 +78,7 @@ public class ToursController {
     }
 
     @PostMapping("/tourInfo/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String setInfo(Model model, @PathVariable String id,
                           @RequestParam("image") MultipartFile tourImage,
                           @RequestParam String tourName,
@@ -123,7 +128,7 @@ public class ToursController {
     }
 
     @GetMapping("/remove/{id}")
-//    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String remove(Model model, @PathVariable Integer id) {
         model.addAttribute("isLogin", userService.isLogin());
         model.addAttribute("isAdmin", userService.isAdmin());
