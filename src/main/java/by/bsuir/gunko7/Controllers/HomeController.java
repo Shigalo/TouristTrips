@@ -25,7 +25,7 @@ public class HomeController {
     @GetMapping("/")
     public String home(Model model) {
 
-        model.addAttribute("tourList", tourService.findAll());
+        model.addAttribute("tourList", tourService.findAccess());
         model.addAttribute("targetSet", tourService.targetSet());
         model.addAttribute("lengthSet", tourService.lengthSet());
         model.addAttribute("typeSet", tourService.typeSet());

@@ -54,4 +54,8 @@ public class TourService {
                 list.add(tour.getLength());
         return list;
     }
+
+    public List<Tour> findAccess() {
+        return tourRepository.findAllByPostTrueAndPlacesIsAfter(0);
+    }
 }

@@ -10,7 +10,8 @@
     <form action="" method="post" align="center"><br/>
         <label>Осталось мест : ${tour.places}<br/>
             Количество билетов : <input id="places" type="number" name="places" min="0" value="1" step="1" oninput="setCost()"><br/>
-            Цена : <input id="cost" name="cost" value="0" disabled><br/><br/>
+            Цена : <input id="cost" value="0" disabled><br/><br/>
+            <input id="costH" hidden name="cost" value="0"><br/><br/>
         </label>
         <label>
             <br/>Авиаперелёт<br/>
@@ -74,6 +75,8 @@
         }
         </c:if>
         document.getElementById("cost").setAttribute("value", places.value*(Number(${tour.cost})+Number(flightCost)));
+        document.getElementById("costH").setAttribute("value", places.value*(Number(${tour.cost})+Number(flightCost)));
+
     }
     setCost();
 </script>

@@ -13,4 +13,6 @@ public interface TourRepository extends JpaRepository<Tour, Long> {
     @Transactional
     public void deleteById(Integer id);
 
+    public List<Tour> findAllByPostTrueAndPlacesIsAfter(int places);
+
 }
