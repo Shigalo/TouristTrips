@@ -27,14 +27,16 @@ public class Request {
     private String questions;
     private Double cost;
     private Integer places;
+    private Boolean confirm;
 
-    public Request(Tour tour, User user, Double cost, Flight flight, String questions, Integer places) {
+    public Request(Tour tour, User user, Double cost, Flight flight, String questions, Integer places, Boolean confirm) {
         this.tour = tour;
         this.user = user;
         this.cost = cost;
         this.flight = flight;
         this.questions = questions;
         this.places = places;
+        this.confirm = confirm;
     }
 
     public Request() {

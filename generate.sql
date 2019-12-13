@@ -62,3 +62,5 @@ CREATE TABLE `touristTrips`.`request` (
 
 INSERT INTO `touristtrips`.`user` (`id`, `name`, `password`, `active`) VALUES ('-1', 'admin', 'admin', '1');
 INSERT INTO `touristtrips`.`user_role` (`user_id`, `roles`) VALUES ('-1', 'ADMIN');
+
+ALTER TABLE request ADD confirm boolean NULL;

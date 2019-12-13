@@ -51,6 +51,7 @@ public class RequestService {
         request.setQuestions(questions);
         request.setPlaces(places);
         request.setUser(userService.getCurrentUser());
+        request.setConfirm(false);
         tour.setPlaces(tour.getPlaces() - places);
         requestRepository.save(request);
     }
