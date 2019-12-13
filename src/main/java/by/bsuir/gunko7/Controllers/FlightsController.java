@@ -1,6 +1,7 @@
 package by.bsuir.gunko7.Controllers;
 
 import by.bsuir.gunko7.Entities.Flight;
+import by.bsuir.gunko7.Entities.Tour;
 import by.bsuir.gunko7.Services.FlightService;
 import by.bsuir.gunko7.Services.TourService;
 import by.bsuir.gunko7.Services.UserService;
@@ -23,6 +24,8 @@ public class FlightsController {
     UserService userService;
     @Autowired
     FlightService flightService;
+    @Autowired
+    TourService tourService;
 
     @GetMapping("")
     public String viewFlights(Model model) {
@@ -36,23 +39,22 @@ public class FlightsController {
     public String addForm(Model model) {
         model.addAttribute("isLogin", userService.isLogin());
         model.addAttribute("isAdmin", userService.isAdmin());
+        model.addAttribute("tourList", tourService.findAll());
         return "flights/newFlight";
     }
 
     @PostMapping("/add")
 //    @PreAuthorize("hasAuthority('ADMIN')")
     public String create(@RequestParam String out,
-                         @RequestParam String target,
-                         @RequestParam String departure,
-                         @RequestParam String arrival,
                          @RequestParam Double cost,
+                         @RequestParam String tour,
                          Model model) throws ParseException {
         model.addAttribute("isLogin", userService.isLogin());
         model.addAttribute("isAdmin", userService.isAdmin());
 
-        Flight flight = new Flight(out, target, cost,
-                new Timestamp(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").parse(departure).getTime()),
-                new Timestamp(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").parse(arrival).getTime()));
+        Tour buf = tourService.findById(tour.split(":")[0]);
+        Flight flight = new Flight(out, cost, buf.getDate().minusDays(1));
+        flight.setTour(buf);
         flightService.addFlight(flight);
         return "redirect:/flights";
     }

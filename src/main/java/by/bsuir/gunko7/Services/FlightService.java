@@ -31,8 +31,7 @@ public class FlightService {
         flightRepository.deleteById(id);
     }
 
-    public List<Flight> findForTour(Tour tour) {
-        String target = tour.getTarget();
-        return flightRepository.findByTarget(target);
+    public List<Flight> findByTour(Tour tour) {
+        return flightRepository.findByTour(tour);
     }
 }

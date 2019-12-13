@@ -11,6 +11,8 @@ CREATE TABLE `touristTrips`.`user` (
   name VARCHAR(45) NOT NULL,
   password VARCHAR(45) NOT NULL,
   active boolean NOT NULL,
+  surname varchar(45) NULL,
+  phone varchar(45) NULL,
   PRIMARY KEY (`id`));
 
 CREATE TABLE `touristTrips`.`tour` (
@@ -30,10 +32,12 @@ CREATE TABLE `touristTrips`.`tour` (
 CREATE TABLE `touristTrips`.`flight` (
   id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   outp varchar(45) NOT NULL,
-  target varchar(45) NOT NULL,
-  departure datetime NOT NULL,
   arrival datetime NOT NULL,
-  cost double);
+  cost double,
+  tour_id int NULL,
+  flight_id int DEFAULT null NULL,
+  CONSTRAINT request_flight FOREIGN KEY (flight_id) REFERENCES flight (id),
+  CONSTRAINT flight_tour FOREIGN KEY (tour_id) REFERENCES tour (id) ON DELETE CASCADE ON UPDATE CASCADE);
 
 CREATE TABLE `touristTrips`.`info`(
     id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -50,6 +54,8 @@ CREATE TABLE `touristTrips`.`request` (
   user_id int NOT NULL,
   flight_id int,
   cost double NOT NULL,
+  questions text DEFAULT null NULL,
+  places int NULL,
   CONSTRAINT request_tour FOREIGN KEY (tour_id) REFERENCES tour (id) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT request_user FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT request_flight FOREIGN KEY (flight_id) REFERENCES flight (id) ON DELETE CASCADE ON UPDATE CASCADE);

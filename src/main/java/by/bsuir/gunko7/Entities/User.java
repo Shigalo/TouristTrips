@@ -11,8 +11,10 @@ public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
-    
+
     private String name;
+    private String surname;
+    private String phone;
     private String password;
     private boolean active;
 
@@ -21,10 +23,12 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
-    public User(String name, String password, boolean active) {
+    public User(String name, String password, boolean active, String surname, String phone) {
         this.name = name;
         this.password = password;
         this.active = active;
+        this.surname = surname;
+        this.phone = phone;
     }
 
     public User() {

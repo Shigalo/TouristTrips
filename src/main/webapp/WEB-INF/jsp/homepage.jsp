@@ -6,9 +6,9 @@
         <option>Любая</option>
         <c:forEach items="${targetSet}" var="target"><option>${target}</option></c:forEach>
     </select></label><br>
-    <label>Дата тура:<br>
-        <input id="dateS" type="date" onchange="filter()">
-        <input id="dateE" type="date" onchange="filter()">
+    <label>Дата тура: От<br>
+        <input id="dateS" type="date" onchange="filter()"><br>
+        По<br><input id="dateE" type="date" onchange="filter()">
     </label>
     <label>Продолжительность:<br>
         <select id="length" onchange="filter()">
@@ -23,10 +23,11 @@
 </div>
 <div id="content">
     <c:forEach items="${tourList}" var="tour">
-        <c:if test="${tour.post && tour.places !=0}"><table>
+        <c:if test="${tour.post && tour.places !=0}"><table style="left: 100px; position:relative;">
             <tr onclick="document.location = '/tours/getTour/${tour.id}'">
-                <td><img src="/tourImage/<c:out value='${tour.id}'/>" style="width: 150px" /><br/></td>
-                <td><h3 align="center">${tour.name} - ${tour.target}</h3><p align="justify">${tour.about}</p></td>
+                <td><img src="/tourImage/<c:out value='${tour.id}'/>" style="width: 200px" /><br/></td>
+                <td width="950px"><h3 align="center">${tour.name} - ${tour.target}</h3><p align="justify">${tour.about}</p>
+                <p>${tour.type}: ${tour.length} ночей за ${tour.cost} р.</p></td>
             </tr>
         </table></c:if>
     </c:forEach>
@@ -47,11 +48,15 @@
         <c:if test="${tour.post && tour.places !=0}">
 
         var table = document.createElement('table');
+        table.style.left = "100px";
+        table.style.position = "relative";
         var tr = document.createElement('tr');
         var td1 = document.createElement('td');
         td1.innerHTML = "<img src=\"/tourImage/<c:out value='${tour.id}'/>\" style=\"width: 150px\" /><br/>";
         var td2 = document.createElement('td');
-        td2.innerHTML = "<h3 align=\"center\">${tour.name} - ${tour.target}</h3><p align=\"justify\">${tour.about}</p>";
+        td2.setAttribute("width", "1000px");
+        td2.innerHTML = "<h3 align=\"center\">${tour.name} - ${tour.target}</h3><p align=\"justify\">${tour.about}</p>"+
+            "<p>${tour.type}: ${tour.length} ночей за ${tour.cost} р.</p>";
 
         if(target.selectedIndex !== 0) {if(target.options[target.selectedIndex].innerHTML !== '${tour.target}') {table.setAttribute("hidden", "hidden");}}
         if(length.selectedIndex !== 0) {if(length.options[length.selectedIndex].innerHTML !== '${tour.length}') {table.setAttribute("hidden", "hidden");}}

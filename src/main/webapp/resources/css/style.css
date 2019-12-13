@@ -1,7 +1,6 @@
 html {
     font-family: "sans-serif", "Arial";
     font-size: 16px;
-    background: silver;
 }
 a {
     padding:0 5% 0 0;
@@ -14,13 +13,20 @@ header {
     top: 5%;
 }
 
+.dataHref {
+    position: absolute;
+    top: 70px;
+    right: 300px;
+    color: black;
+}
+
 article { margin: 0; }
 #sidebar, #content { position: absolute; top: 20%; }
 #sidebar, #content { overflow: auto; padding: 10px; }
 
 #sidebar {
-    width: 150px;
-    background: #ECF5E4; border-right: 1px solid #231F20;
+    width: 200px;
+    border-right: 1px solid #231F20;
     bottom: 0; /* Расстояние снизу  */
 }
 #content {
@@ -38,6 +44,10 @@ article { margin: 0; }
     color: blue;
     font-weight: bold;
     text-align: center;
+    box-shadow: 0 0 10px 10px #6DB3F2;
+}
+.mainText {
+    padding-top: 30px;
 }
 
 .log {
@@ -54,3 +64,26 @@ article { margin: 0; }
     width: 99%;
     height: 2.5rem;            /* Footer height */
 }
+
+.shell {
+    position: relative;
+    line-height: 1; }
+.shell span {
+    position: absolute;
+    left: 3px;
+    top: 1px;
+    pointer-events: none;
+    z-index: -1; }
+.shell span i {
+    font-style: normal;
+    /* any of these 3 will work */
+    opacity: 0;
+    visibility: hidden; }
+
+input.masked,
+.shell span {
+    font-size: 16px;
+    font-family: monospace;
+    padding-right: 10px;
+    background-color: transparent;
+    text-transform: uppercase; }

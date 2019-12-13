@@ -34,6 +34,8 @@ public class RegistrationController {
 
     @PostMapping
     public String getForm(@RequestParam String username,
+                          @RequestParam String surname,
+                          @RequestParam String phone,
                           @RequestParam String password,
                           @RequestParam String passwordConfirm,
                           Model model) {
@@ -42,13 +44,13 @@ public class RegistrationController {
 
         if(!password.equals(passwordConfirm)) {
             model.addAttribute("massage", "Пароли не совпадают!");
-            return "registration";
+            return "accountWork/registration";
         }
         if(userRepository.findByName(username) != null) {
             model.addAttribute("massage", "Имя пользователя уже используется!");
-            return "registration";
+            return "accountWork/registration";
         }
-        User user = new User(username, password, true);
+        User user = new User(username, password, true, surname, phone);
         user.setRoles(Collections.singleton(Role.USER));
         userRepository.save(user);
         return "redirect:/login";

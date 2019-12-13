@@ -5,7 +5,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>туры</title>
+    <title>Туры</title>
 </head>
 <body>
 <div class="log">
@@ -17,15 +17,17 @@
 </div>
 <header>
     <a href="${pageContext.request.contextPath}/"><div class="mainHref">
-        <div style="padding-top: 70px">Главная</div>
+        <div id="mainText"><h2 style="font-style: italic">Главная</h2></div>
         <%--<img src="<c:url value="resources/images/home.png"/>" width="120" height="90">--%>
     </div></a>
-    <table border="1">
-        <tr>
-            <td><a href="${pageContext.request.contextPath}/tours">Туры</a></td>
-            <td><a href="${pageContext.request.contextPath}/flights">Полёты</a></td>
-        </tr>
-    </table>
+    <c:if test="${isAdmin}">
+        <table border="1" id="dataHref">
+            <tr>
+                <td><a href="${pageContext.request.contextPath}/tours">Туры</a></td>
+                <td><a href="${pageContext.request.contextPath}/flights">Полёты</a></td>
+            </tr>
+        </table>
+    </c:if>
 
 </header>
 <article>

@@ -14,6 +14,13 @@ public class RequestService {
     @Autowired
     RequestRepository requestRepository;
 
+    @Autowired
+    FlightService flightService;
+    @Autowired
+    TourService tourService;
+    @Autowired
+    UserService userService;
+
     public void addRequest(Request request) {
         requestRepository.save(request);
     }
@@ -32,5 +39,16 @@ public class RequestService {
 
     public List<Request> findAll() {
         return requestRepository.findAll();
+    }
+
+    public void addRequest(Integer places, String questions, String flightId, Double cost, String id) {
+        Request request = new Request();
+        request.setCost(cost);
+        request.setFlight(flightService.getById(flightId));
+        request.setTour(tourService.findById(id));
+        request.setQuestions(questions);
+        request.setPlaces(places);
+        request.setUser(userService.getCurrentUser());
+        requestRepository.save(request);
     }
 }

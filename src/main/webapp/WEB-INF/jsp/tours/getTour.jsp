@@ -8,7 +8,16 @@
         </tr>
         <tr>
             <td>${tour.length} ${tour.date} ${tour.cost}</td>
-            <td><a href="<c:url value='/requests/addRequest/${tour.id}'/>">Заказать</a></td>
+            <td>
+                <c:if test="${isLogin}">
+                <form>
+                <a href="<c:url value='/requests/addRequest/${tour.id}'/>">Заказать</a>
+                </form>
+                </c:if>
+                <c:if test="${!isLogin}">
+                    Для Заказа необходимо войти
+                </c:if>
+            </td>
         </tr>
     </table>
     <table id="infoTable" border="1">

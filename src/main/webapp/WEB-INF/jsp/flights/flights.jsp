@@ -11,8 +11,8 @@
             <caption>Предложения</caption>
             <tr>
                 <th>ID</th>
-                <th>Цельевой пункт</th>
                 <th>out</th>
+                <th>Цельевой пункт</th>
                 <th>departure</th>
                 <th>arrival</th>
                 <th>cost</th>
@@ -21,9 +21,9 @@
             <c:forEach items="${flightList}" var="flight">
                 <tr id="${flight.id}">
                     <td>${flight.id}</td>
-                    <td>${flight.target}</td>
                     <td>${flight.out}</td>
-                    <td>${flight.departure}</td>
+                    <td>${flight.tour.target}</td>
+                    <td>${flight.tour.date}</td>
                     <td>${flight.arrival}</td>
                     <td>${flight.cost}</td>
                     <%--<td>

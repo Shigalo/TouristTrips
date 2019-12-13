@@ -24,12 +24,17 @@ public class Request {
     @JoinColumn(name = "flight_id")
     private Flight flight;
 
+    private String questions;
     private Double cost;
+    private Integer places;
 
-    public Request(Tour tour, User user, Double cost) {
+    public Request(Tour tour, User user, Double cost, Flight flight, String questions, Integer places) {
         this.tour = tour;
         this.user = user;
         this.cost = cost;
+        this.flight = flight;
+        this.questions = questions;
+        this.places = places;
     }
 
     public Request() {

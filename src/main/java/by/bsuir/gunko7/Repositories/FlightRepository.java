@@ -1,6 +1,7 @@
 package by.bsuir.gunko7.Repositories;
 
 import by.bsuir.gunko7.Entities.Flight;
+import by.bsuir.gunko7.Entities.Tour;
 import by.bsuir.gunko7.Entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +16,7 @@ public interface FlightRepository extends JpaRepository<Flight, Long> {
     @Transactional
     public void deleteById(Integer id);
 
-    public List<Flight> findByTarget(String target);
+    public List<Flight> findByTour(Tour tour);
 
 /*    @Transactional
     @Modifying

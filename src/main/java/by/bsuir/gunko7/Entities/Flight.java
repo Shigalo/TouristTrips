@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -15,15 +16,16 @@ public class Flight {
 
     @Column(name = "outp")
     String out;
-    String target;//tour
-    Timestamp departure;//from tour
-    Timestamp arrival;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "tour_id")
+    private Tour tour;
+
+    LocalDateTime arrival;
     Double cost;
 
-    public Flight(String out, String target, Double cost, Timestamp departure, Timestamp arrival) {
+    public Flight(String out, Double cost, LocalDateTime arrival) {
         this.out = out;
-        this.target = target;
-        this.departure = departure;
         this.arrival = arrival;
         this.cost = cost;
     }
