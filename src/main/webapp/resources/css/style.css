@@ -13,13 +13,6 @@ header {
     top: 5%;
 }
 
-.dataHref {
-    position: absolute;
-    top: 70px;
-    right: 300px;
-    color: black;
-}
-
 article { margin: 0; }
 #sidebar, #content { position: absolute; top: 20%; }
 #sidebar, #content { overflow: auto; padding: 10px; }

@@ -11,23 +11,18 @@
 <div class="log">
     <c:if test="${isLogin}"><form action="${pageContext.request.contextPath}/logout" method="post">
         <input type="hidden" name="_csrf" value="${_csrf.token}" />
-        <input type="submit" value="Выход">
+        <a href="#" onclick="this.parentNode.submit()">Выход</a>
     </form></c:if>
     <c:if test="${!isLogin}"><a href="${pageContext.request.contextPath}/login">Вход</a></c:if>
+    <c:if test="${isAdmin}">
+        <a href="${pageContext.request.contextPath}/tours">Туры</a>
+        <a href="${pageContext.request.contextPath}/flights">Полёты</a>
+    </c:if>
 </div>
 <header>
     <a href="${pageContext.request.contextPath}/"><div class="mainHref">
         <div id="mainText"><h2 style="font-style: italic">Главная</h2></div>
         <%--<img src="<c:url value="resources/images/home.png"/>" width="120" height="90">--%>
     </div></a>
-    <c:if test="${isAdmin}">
-        <table border="1" id="dataHref">
-            <tr>
-                <td><a href="${pageContext.request.contextPath}/tours">Туры</a></td>
-                <td><a href="${pageContext.request.contextPath}/flights">Полёты</a></td>
-            </tr>
-        </table>
-    </c:if>
-
 </header>
 <article>

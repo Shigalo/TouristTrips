@@ -37,7 +37,7 @@ CREATE TABLE `touristTrips`.`flight` (
   tour_id int NULL,
   flight_id int DEFAULT null NULL,
   CONSTRAINT request_flight FOREIGN KEY (flight_id) REFERENCES flight (id),
-  CONSTRAINT flight_tour FOREIGN KEY (tour_id) REFERENCES tour (id) ON DELETE CASCADE ON UPDATE CASCADE);
+  CONSTRAINT request_tour FOREIGN KEY (tour_id) REFERENCES tour (id) ON DELETE CASCADE ON UPDATE CASCADE);
 
 CREATE TABLE `touristTrips`.`info`(
     id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -59,3 +59,6 @@ CREATE TABLE `touristTrips`.`request` (
   CONSTRAINT request_tour FOREIGN KEY (tour_id) REFERENCES tour (id) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT request_user FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT request_flight FOREIGN KEY (flight_id) REFERENCES flight (id) ON DELETE CASCADE ON UPDATE CASCADE);
+
+INSERT INTO `touristtrips`.`user` (`id`, `name`, `password`, `active`) VALUES ('-1', 'admin', 'admin', '1');
+INSERT INTO `touristtrips`.`user_role` (`user_id`, `roles`) VALUES ('-1', 'ADMIN');
