@@ -1,6 +1,7 @@
 package by.bsuir.gunko7.Services;
 
 import by.bsuir.gunko7.Entities.Request;
+import by.bsuir.gunko7.Entities.Tour;
 import by.bsuir.gunko7.Entities.User;
 import by.bsuir.gunko7.Repositories.RequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,10 +46,12 @@ public class RequestService {
         Request request = new Request();
         request.setCost(cost);
         request.setFlight(flightService.getById(flightId));
-        request.setTour(tourService.findById(id));
+        Tour tour = tourService.findById(id);
+        request.setTour(tour);
         request.setQuestions(questions);
         request.setPlaces(places);
         request.setUser(userService.getCurrentUser());
+        tour.setPlaces(tour.getPlaces() - places);
         requestRepository.save(request);
     }
 }

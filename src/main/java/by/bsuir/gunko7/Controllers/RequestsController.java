@@ -8,6 +8,7 @@ import by.bsuir.gunko7.Services.RequestService;
 import by.bsuir.gunko7.Services.TourService;
 import by.bsuir.gunko7.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +30,7 @@ public class RequestsController {
     RequestService requestService;
 
     @GetMapping("/addRequest/{id}")
+    @PreAuthorize("hasAuthority('ADMIN') || hasAuthority('USER')")
     public String addTransport(Model model, @PathVariable String id) {
         model.addAttribute("isLogin", userService.isLogin());
         Tour tour = tourService.findById(id);
@@ -41,6 +43,7 @@ public class RequestsController {
     }
 
     @PostMapping("/addRequest/{id}")
+    @PreAuthorize("hasAuthority('ADMIN') || hasAnyAuthority('USER')")
     public String addTransportData(@RequestParam Integer places,
                                    @RequestParam String questions,
                                    @RequestParam String flightId,

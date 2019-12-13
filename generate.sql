@@ -22,7 +22,7 @@ CREATE TABLE `touristTrips`.`tour` (
   name varchar(45) NOT NULL,
   post boolean DEFAULT false NOT NULL,
   date datetime NOT NULL,
-  picture blob(500),
+  picture mediumblob,
   about text,
   length int,
   type varchar(45),
@@ -45,7 +45,7 @@ CREATE TABLE `touristTrips`.`info`(
     sequence int NOT NULL,
     header varchar(45),
     about text,
-    picture blob(500),
+    picture mediumblob,
     CONSTRAINT info_tour FOREIGN KEY (tour_id) REFERENCES tour (id) ON DELETE CASCADE ON UPDATE CASCADE);
 
 CREATE TABLE `touristTrips`.`request` (

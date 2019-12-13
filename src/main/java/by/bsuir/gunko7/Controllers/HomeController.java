@@ -1,13 +1,5 @@
 package by.bsuir.gunko7.Controllers;
 
-import by.bsuir.gunko7.Entities.Flight;
-import by.bsuir.gunko7.Entities.Request;
-import by.bsuir.gunko7.Entities.User;
-import by.bsuir.gunko7.Entities.Tour;
-import by.bsuir.gunko7.Repositories.FlightRepository;
-import by.bsuir.gunko7.Repositories.RequestRepository;
-import by.bsuir.gunko7.Repositories.UserRepository;
-import by.bsuir.gunko7.Repositories.TourRepository;
 import by.bsuir.gunko7.Services.FlightService;
 import by.bsuir.gunko7.Services.RequestService;
 import by.bsuir.gunko7.Services.TourService;
@@ -17,8 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
 
 @Controller
 public class HomeController {
@@ -47,6 +37,6 @@ public class HomeController {
 
     @RequestMapping("/403")
     public String accessDenied() {
-        return "errors/403";
+        return "error";
     }
 }

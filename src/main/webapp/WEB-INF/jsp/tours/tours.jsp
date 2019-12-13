@@ -1,13 +1,13 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@include file='../parts/header.jsp'%>
 
-
 <div id="content">
     <c:if test="${empty tourList}"><h3 style="left: 23%; position: relative">Записи предоставляемых услуг не найдены</h3></c:if>
-    <a style="left: 33%; position: relative" href="${pageContext.request.contextPath}/tours/add">Добавить</a>
+    <a id="addTour" style="left: 35%; position: relative" href="${pageContext.request.contextPath}/tours/add">Добавить</a>
     <c:if test="${!empty tourList}">
-        <table>
-            <caption>Предложения</caption>
+        <table border="1" style="left: 10%; position: relative;">
+            <br/><br/>
+            <h2>Предложения</h2>
             <tr>
                 <th>ID тура</th>
                 <th>Название</th>
@@ -27,7 +27,7 @@
                     <c:if test="${tour.post}"><td>Размещено</td></c:if>
                     <c:if test="${!tour.post}"><td>Скрыто</td></c:if>
                     <td>
-                        <form action="/tours/tourInfo/${tour.id}" method="get">
+                        <form action="/tours/tourInfo/${tour.id}" method="get" style="display:inline">
                             <a href="#" onclick="this.parentNode.submit()">Подробнее</a>
                         </form></td>
                     <td><a href="<c:url value='/tours/remove/${tour.id}'/>">Удалить</a></td>

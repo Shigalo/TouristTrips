@@ -24,7 +24,7 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addViewController("/flights/add").setViewName("flights/newFlight");
         registry.addViewController("/tours").setViewName("tours/tours");
         registry.addViewController("/tours/add").setViewName("tours/newTour");
-    }
+   }
 
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {

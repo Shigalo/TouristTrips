@@ -2,38 +2,34 @@
 <%@include file='../parts/header.jsp'%>
 
 <div id="content">
-
-    <a href="${pageContext.request.contextPath}/flights/add">Добавить</a>
-
-    <c:if test="${empty flightList}"><h2>Ма</h2></c:if>
+    <img style="left: 31%; position: relative; width: 300px; height: auto" src="<c:url value="/resources/images/plane.png"/>" width="120" height="90">
+    <c:if test="${empty flightList}"><h3 style="left: 23%; position: relative">Записи предоставляемых услуг авиаеревозки не найдены</h3></c:if>
+    <a style="left: 15%; position: relative" id="addTour" href="${pageContext.request.contextPath}/flights/add">Добавить</a>
     <c:if test="${!empty flightList}">
-        <table>
-            <caption>Предложения</caption>
+        <table border="1">
+            <caption>Предложения авиаперелётов</caption>
             <tr>
                 <th>ID</th>
-                <th>out</th>
-                <th>Цельевой пункт</th>
-                <th>departure</th>
-                <th>arrival</th>
-                <th>cost</th>
+                <th>Пункт отправления</th>
+                <th>Дата отправления</th>
+                <th>Время отправления</th>
+                <th>Пункт прибытия</th>
+                <th>Дата прибытия</th>
+                <th>Время прибытия</th>
+                <th>Цена билета</th>
             </tr>
 
             <c:forEach items="${flightList}" var="flight">
                 <tr id="${flight.id}">
                     <td>${flight.id}</td>
                     <td>${flight.out}</td>
+                    <td>${flight.arrival.toLocalDate()}</td>
+                    <td>${flight.arrival.toLocalTime()}</td>
                     <td>${flight.tour.target}</td>
-                    <td>${flight.tour.date}</td>
-                    <td>${flight.arrival}</td>
+                    <td>${flight.tour.date.toLocalDate()}</td>
+                    <td>${flight.tour.date.toLocalTime()}</td>
                     <td>${flight.cost}</td>
-                    <%--<td>
-                        <form action="/tours/tourView/${flight.id}" method="get">
-                            <input type="submit" value="Подробнее">
-                        </form>
-                    </td>--%>
-                    <%--<c:if test="${isAdmin}">--%>
-                        <td><a href="<c:url value='/flights/remove/${flight.id}'/>">Удалить</a></td>
-                    <%--</c:if>--%>
+                    <td><a href="<c:url value='/flights/remove/${flight.id}'/>">Удалить</a></td>
                 </tr>
             </c:forEach>
         </table>

@@ -28,7 +28,6 @@ public class RegistrationController {
     public String setForm(Model  model) {
         model.addAttribute("isLogin", userService.isLogin());
         model.addAttribute("isAdmin", userService.isAdmin());
-
         return "accountWork/registration";
     }
 

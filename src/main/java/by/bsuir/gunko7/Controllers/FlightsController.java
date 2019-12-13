@@ -28,6 +28,7 @@ public class FlightsController {
     TourService tourService;
 
     @GetMapping("")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String viewFlights(Model model) {
         model.addAttribute("isLogin", userService.isLogin());
         model.addAttribute("isAdmin", userService.isAdmin());
@@ -36,6 +37,7 @@ public class FlightsController {
     }
 
     @GetMapping("/add")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String addForm(Model model) {
         model.addAttribute("isLogin", userService.isLogin());
         model.addAttribute("isAdmin", userService.isAdmin());
@@ -44,7 +46,7 @@ public class FlightsController {
     }
 
     @PostMapping("/add")
-//    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String create(@RequestParam String out,
                          @RequestParam Double cost,
                          @RequestParam String tour,
@@ -60,7 +62,7 @@ public class FlightsController {
     }
 
     @GetMapping("/remove/{id}")
-//    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String remove(Model model, @PathVariable Integer id) {
         model.addAttribute("isLogin", userService.isLogin());
         model.addAttribute("isAdmin", userService.isAdmin());

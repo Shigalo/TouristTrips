@@ -22,7 +22,6 @@
 <header>
     <a href="${pageContext.request.contextPath}/"><div class="mainHref">
         <div id="mainText"><h2 style="font-style: italic">Главная</h2></div>
-        <%--<img src="<c:url value="resources/images/home.png"/>" width="120" height="90">--%>
     </div></a>
 </header>
 <article>
