@@ -2,6 +2,7 @@ package by.bsuir.gunko7.Controllers;
 
 import by.bsuir.gunko7.Entities.Info;
 import by.bsuir.gunko7.Entities.Tour;
+import by.bsuir.gunko7.Services.FlightService;
 import by.bsuir.gunko7.Services.InfoService;
 import by.bsuir.gunko7.Services.TourService;
 import by.bsuir.gunko7.Services.UserService;
@@ -31,6 +32,8 @@ public class ToursController {
     TourService tourService;
     @Autowired
     InfoService infoService;
+    @Autowired
+    FlightService flightService;
 
     @GetMapping("")
     @PreAuthorize("hasAuthority('ADMIN')")
@@ -113,6 +116,7 @@ public class ToursController {
         tour.setName(tourName);
         tour.setAbout(tourText);
         tour.setLength(length);
+        flightService.updateLength(tour);
         tour.setTarget(tourTarget);
         tour.setCost(tourCost);
         tour.setPlaces(tour.getPlaces() + places);

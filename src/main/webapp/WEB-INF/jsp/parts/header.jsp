@@ -8,7 +8,7 @@
     <title>Туры</title>
 </head>
 <body>
-<div class="log">
+<div class="log" style="z-index: 100">
     <c:if test="${isLogin}"><form action="${pageContext.request.contextPath}/logout" method="post">
         <input type="hidden" name="_csrf" value="${_csrf.token}" />
         <a href="#" onclick="this.parentNode.submit()">Выход</a>

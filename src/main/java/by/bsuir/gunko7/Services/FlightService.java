@@ -34,4 +34,10 @@ public class FlightService {
     public List<Flight> findByTour(Tour tour) {
         return flightRepository.findByTour(tour);
     }
+
+    public void updateLength(Tour tour) {
+        for(Flight flight : findByTour(tour)) {
+            flight.setArrival(tour.getDate().plusDays(tour.getLength()));
+        }
+    }
 }
