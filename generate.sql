@@ -56,11 +56,10 @@ CREATE TABLE `touristTrips`.`request` (
   cost double NOT NULL,
   questions text DEFAULT null NULL,
   places int NULL,
+  confirm boolean NULL,
   CONSTRAINT request_tour FOREIGN KEY (tour_id) REFERENCES tour (id) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT request_user FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT request_flight FOREIGN KEY (flight_id) REFERENCES flight (id) ON DELETE CASCADE ON UPDATE CASCADE);
 
 INSERT INTO `touristtrips`.`user` (`id`, `name`, `password`, `active`) VALUES ('-1', 'admin', 'admin', '1');
 INSERT INTO `touristtrips`.`user_role` (`user_id`, `roles`) VALUES ('-1', 'ADMIN');
-
-ALTER TABLE request ADD confirm boolean NULL;

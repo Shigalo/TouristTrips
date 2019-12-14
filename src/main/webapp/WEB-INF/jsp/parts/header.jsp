@@ -15,8 +15,9 @@
     </form></c:if>
     <c:if test="${!isLogin}"><a href="${pageContext.request.contextPath}/login">Вход</a></c:if>
     <c:if test="${isAdmin}">
-        <a href="${pageContext.request.contextPath}/tours">Туры</a>
-        <a href="${pageContext.request.contextPath}/flights">Полёты</a>
+        <a href="${pageContext.request.contextPath}/tours">Туры</a><br/>
+        <a href="${pageContext.request.contextPath}/flights">Полёты</a><br/>
+        <a href="${pageContext.request.contextPath}/requests/requests">Заявки</a><br/>
     </c:if>
 </div>
 <header>

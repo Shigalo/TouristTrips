@@ -55,7 +55,8 @@ public class FlightsController {
         model.addAttribute("isAdmin", userService.isAdmin());
 
         Tour buf = tourService.findById(tour.split(":")[0]);
-        Flight flight = new Flight(out, cost, buf.getDate().minusDays(1));
+        Flight flight = new Flight(out, cost, buf.getDate().plusDays(buf.getLength()));
+
         flight.setTour(buf);
         flightService.addFlight(flight);
         return "redirect:/flights";

@@ -11,11 +11,9 @@
             <tr>
                 <th>ID</th>
                 <th>Пункт отправления</th>
-                <th>Дата отправления</th>
-                <th>Время отправления</th>
+                <th>Дата Возвращения</th>
                 <th>Пункт прибытия</th>
                 <th>Дата прибытия</th>
-                <th>Время прибытия</th>
                 <th>Цена билета</th>
             </tr>
 
@@ -24,10 +22,8 @@
                     <td>${flight.id}</td>
                     <td>${flight.out}</td>
                     <td>${flight.arrival.toLocalDate()}</td>
-                    <td>${flight.arrival.toLocalTime()}</td>
                     <td>${flight.tour.target}</td>
                     <td>${flight.tour.date.toLocalDate()}</td>
-                    <td>${flight.tour.date.toLocalTime()}</td>
                     <td>${flight.cost}</td>
                     <td><a href="<c:url value='/flights/remove/${flight.id}'/>">Удалить</a></td>
                 </tr>

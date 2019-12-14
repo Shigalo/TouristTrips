@@ -45,14 +45,24 @@ public class RequestService {
     public void addRequest(Integer places, String questions, String flightId, Double cost, String id) {
         Request request = new Request();
         request.setCost(cost);
-        request.setFlight(flightService.getById(flightId));
+        if(flightId == null) request.setFlight(null);
+        else request.setFlight(flightService.getById(flightId));
         Tour tour = tourService.findById(id);
         request.setTour(tour);
         request.setQuestions(questions);
         request.setPlaces(places);
         request.setUser(userService.getCurrentUser());
         request.setConfirm(false);
-        tour.setPlaces(tour.getPlaces() - places);
+//        tour.setPlaces(tour.getPlaces() - places);
+        requestRepository.save(request);
+    }
+
+    public void confirm(String id) {
+        Request request = requestRepository.findById(Integer.valueOf(id));
+        request.setConfirm(true);
+        Tour tour = request.getTour();
+        tour.setPlaces(tour.getPlaces() - request.getPlaces());
+        tourService.update(tour);
         requestRepository.save(request);
     }
 }

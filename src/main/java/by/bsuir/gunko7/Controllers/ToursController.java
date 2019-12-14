@@ -57,10 +57,11 @@ public class ToursController {
                          @RequestParam String date,
                          @RequestParam String type,
                          @RequestParam Double cost,
+                         @RequestParam Integer length,
                          Model model) throws ParseException {
         model.addAttribute("isLogin", userService.isLogin());
         model.addAttribute("isAdmin", userService.isAdmin());
-        Tour tour = new Tour(target, name, places, false, 0, type, cost,
+        Tour tour = new Tour(target, name, places, false, length, type, cost,
                 new Timestamp(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm").parse(date).getTime()));
         tourService.addTour(tour);
         return "redirect:/tours/tourInfo/" + tour.getId();
@@ -85,6 +86,8 @@ public class ToursController {
                           @RequestParam String tourText,
                           @RequestParam String tourTarget,
                           @RequestParam Double tourCost,
+                          @RequestParam Integer length,
+                          @RequestParam Integer places,
                           @RequestParam String[] about,
                           @RequestParam String[] header,
                           @RequestParam Integer[] sequence,
@@ -109,9 +112,10 @@ public class ToursController {
         if (blob.length() != 0) tour.setPicture(blob);
         tour.setName(tourName);
         tour.setAbout(tourText);
+        tour.setLength(length);
         tour.setTarget(tourTarget);
-        tour.setLength(about.length-1);
         tour.setCost(tourCost);
+        tour.setPlaces(tour.getPlaces() + places);
 
         tourService.update(tour);
         return "redirect:/tours";

@@ -10,8 +10,12 @@
                     <td><input id="tourName" name="tourName" placeholder="Название тура" value="${tour.name}"></td></tr>
                 <tr><td><label for="tourTarget">Страна назначения</label></td>
                     <td><input id="tourTarget" name="tourTarget" type="text" placeholder="Страна назначения" value="${tour.target}"></td></tr>
+                <tr><td><label for="length">Длительность тура</label></td>
+                    <td><input type="number" step="1" id="length" name="length" placeholder="Длительность тура" value="${tour.length}"></td></tr>
                 <tr><td><label for="tourCost">Стоимость билета</label></td>
                     <td><input type="number" step="0,01" id="tourCost" name="tourCost" placeholder="Стоимсоть" value="${tour.cost}"></td></tr>
+                <tr><td><label for="places">Дополнительные билеты</label></td>
+                    <td><input type="number" step="1" id="places" name="places" placeholder="Количество мест" value="0"></td></tr>
             </table>
             <table>
                 <tr><td><label for="tourText">Описание</label></td><td>

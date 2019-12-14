@@ -48,12 +48,33 @@ public class RequestsController {
                                    @RequestParam String questions,
                                    @RequestParam String flightId,
                                    @RequestParam String cost,
+                                   @RequestParam String flights,
                                    Model model, @PathVariable String id) {
         model.addAttribute("isAdmin", userService.isAdmin());
         model.addAttribute("isLogin", userService.isLogin());
+        if(flights.equals("without")) flightId = null;
 
         requestService.addRequest(places, questions, flightId, Double.valueOf(cost), id);
         return "redirect:/";
-//        return "redirect:/requests/userList";
+    }
+
+    @GetMapping("/requests")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public String requests(Model model) {
+        model.addAttribute("isAdmin", userService.isAdmin());
+        model.addAttribute("isLogin", userService.isLogin());
+        model.addAttribute("requestsList", requestService.findAll());
+
+        return "requests/requests";
+    }
+
+    @GetMapping("/confirm/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public String requests(Model model, @PathVariable String id) {
+        model.addAttribute("isAdmin", userService.isAdmin());
+        model.addAttribute("isLogin", userService.isLogin());
+        requestService.confirm(id);
+
+        return "redirect:/requests/requests";
     }
 }
